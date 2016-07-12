@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.coffeewithandroid.recyclerview.Data.SampleData;
@@ -38,6 +39,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         SampleData sampleData = sampleDataList.get(position);
         holder.title.setText(sampleData.getTitle());
         holder.date.setText(sampleData.getDate());
+
+        //Provides information to devices with Accessibility Enable, Like
+        //in form of Speech using Text-to-Speech for visually Impaired Users
+        holder.imgButton.setContentDescription(sampleData.getTitle());
     }
 
     //Returns the number of items in Recycler View
@@ -50,11 +55,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class myViewHolder extends RecyclerView.ViewHolder {
         //Textviews in data_row.xml
         public TextView title, date;
+        public ImageView imgButton;
 
         public myViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title);
             date = (TextView) itemView.findViewById(R.id.date);
+            imgButton = (ImageView) itemView.findViewById(R.id.imgButton);
         }
     }
 
